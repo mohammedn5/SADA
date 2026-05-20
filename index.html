@@ -38,7 +38,7 @@
             scroll-behavior: smooth;
         }
         
-        /* تأثير الزجاج الشفاف المطور - عزل أعلى ولون أدكن لضمان تباين النصوص */
+        /* تأثير الزجاج الشفاف المطور */
         .glass-panel {
             background: rgba(15, 15, 15, 0.55);
             backdrop-filter: blur(24px);
@@ -47,7 +47,7 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* حاوية الكرات المضيئة لضمان عدم تأثيرها على أبعاد الصفحة */
+        /* حاوية الكرات المضيئة الخلفية */
         .bg-orbs-container {
             position: fixed;
             inset: 0;
@@ -56,7 +56,6 @@
             pointer-events: none;
         }
 
-        /* الأنماط الأساسية للكرات المضيئة */
         .orb {
             position: absolute;
             border-radius: 50%;
@@ -67,31 +66,10 @@
             animation-direction: alternate;
         }
 
-        /* تعريف الكرات بألوانها وأحجامها المختلفة */
-        .orb-emerald {
-            background: #10b981;
-            width: 45vw; height: 45vw;
-            top: -10%; left: -10%;
-            animation: float1 15s infinite;
-        }
-        .orb-amber {
-            background: #f59e0b;
-            width: 40vw; height: 40vw;
-            bottom: -10%; right: -10%;
-            animation: float2 18s infinite;
-        }
-        .orb-purple {
-            background: #7c3aed;
-            width: 35vw; height: 35vw;
-            top: 40%; right: 20%;
-            animation: float3 20s infinite;
-        }
-        .orb-cyan {
-            background: #06b6d4;
-            width: 30vw; height: 30vw;
-            bottom: 20%; left: 10%;
-            animation: float1 22s infinite reverse;
-        }
+        .orb-emerald { background: #10b981; width: 45vw; height: 45vw; top: -10%; left: -10%; animation: float1 15s infinite; }
+        .orb-amber { background: #f59e0b; width: 40vw; height: 40vw; bottom: -10%; right: -10%; animation: float2 18s infinite; }
+        .orb-purple { background: #7c3aed; width: 35vw; height: 35vw; top: 40%; right: 20%; animation: float3 20s infinite; }
+        .orb-cyan { background: #06b6d4; width: 30vw; height: 30vw; bottom: 20%; left: 10%; animation: float1 22s infinite reverse; }
 
         /* كرة تفاعل الماوس */
         #mouse-orb {
@@ -107,7 +85,6 @@
             transition: opacity 0.3s ease;
         }
 
-        /* حركات الأنيميشن العائمة */
         @keyframes float1 {
             0% { transform: translate(0, 0) scale(1); }
             50% { transform: translate(5%, 10%) scale(1.1); }
@@ -124,12 +101,22 @@
             100% { transform: translate(-5%, 5%) scale(1); }
         }
 
-        /* انيميشن العناصر عند تمرير الماوس */
         .hover-lift { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease; }
         .hover-lift:hover { 
             transform: translateY(-8px);
             box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.3);
             border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .partner-card {
+            transition: all 0.4s ease;
+            filter: grayscale(20%);
+        }
+        .partner-card:hover {
+            filter: grayscale(0%);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.05);
         }
     </style>
 </head>
@@ -148,8 +135,8 @@
         <nav class="max-w-7xl mx-auto glass-panel rounded-2xl pointer-events-auto shadow-2xl border-b border-accent-primary/20">
             <div class="flex justify-between items-center h-20 px-8">
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 p-2 overflow-hidden hover:scale-105 transition-transform">
-                        <div class="w-full h-full bg-gradient-to-tr from-accent-primary to-accent-cyan rounded-lg"></div>
+                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 p-1 overflow-hidden hover:scale-105 transition-transform">
+                        <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\لوجو.png" alt="شعار صدى جازان" class="w-full h-full object-contain">
                     </div>
                     <span class="font-extrabold text-xl tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
                         صدى جازان
@@ -157,8 +144,9 @@
                 </div>
                 <div class="hidden md:flex gap-8 text-sm font-bold tracking-widest text-gray-300">
                     <a href="#about" class="hover:text-accent-primary transition-colors">من نحن</a>
-                    <a href="#services" class="hover:text-accent-primary transition-colors">القطاعات</a>
+                    <a href="#services" class="hover:text-accent-primary transition-colors">خدماتنا</a>
                     <a href="#team" class="hover:text-accent-primary transition-colors">القيادة</a>
+                    <a href="#partners" class="hover:text-accent-primary transition-colors">شركاء النجاح</a>
                 </div>
                 <a href="#contact" class="hidden md:block px-6 py-2.5 rounded-xl bg-gradient-to-r from-accent-primary to-accent-secondary text-white font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_rgba(16,185,129,0.3)]">
                     تواصل معنا
@@ -172,7 +160,7 @@
             <div class="relative z-10">
                 <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-xs font-bold text-gray-200 mb-8 uppercase tracking-widest border border-accent-secondary/30 shadow-lg">
                     <span class="w-2 h-2 rounded-full bg-accent-secondary animate-pulse shadow-[0_0_10px_#f59e0b]"></span>
-                    هيئة الصحفيين السعوديين
+                    هيئة الصحفيين السعوديين بجازان
                 </div>
                 <h1 class="text-5xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-2xl">
                     فريق صدى جازان <br>
@@ -188,9 +176,11 @@
             
             <div class="relative hidden lg:block hover-lift">
                 <div class="absolute inset-0 bg-gradient-to-tr from-accent-primary/30 to-accent-purple/30 rounded-3xl blur-2xl"></div>
-                <div class="relative rounded-3xl w-full h-[600px] bg-dark-800 glass-panel border-white/20 flex items-center justify-center overflow-hidden">
-                    <div class="absolute inset-0 bg-[url('./images/hero-cinematic.jpg')] bg-cover bg-center grayscale-[20%] hover:grayscale-0 transition duration-700 opacity-60 mix-blend-overlay"></div>
-                    <i class="fas fa-play-circle text-7xl text-white/50 hover:text-white transition-colors cursor-pointer z-10 hover:scale-110 duration-300"></i>
+                <div class="relative rounded-3xl w-full h-[600px] bg-dark-800 glass-panel border-white/20 overflow-hidden shadow-2xl">
+                    <video class="w-full h-full object-cover" controls preload="metadata" poster="./images/hero-cinematic.jpg">
+                        <source src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\مهرجان جازان ٢٠٢٦م.mp4" type="video/mp4">
+                        متصفحك لا يدعم تشغيل الفيديو.
+                    </video>
                 </div>
             </div>
         </div>
@@ -204,11 +194,24 @@
                     <i class="fas fa-users text-3xl text-accent-primary mb-6 drop-shadow-md"></i>
                     
                     <h3 class="text-3xl font-bold mb-2 text-white">من نحن</h3>
-                    <p class="text-accent-cyan text-sm font-semibold mb-4">فريق إعلامي متخصص يخدم منطقة جازان</p>
+                    <p class="text-accent-cyan text-base font-medium mb-6">
+                        فريق إعلامي تابع لهيئة الصحفيين السعوديين بجازان، يضم مجموعة من شباب وبنات منطقة جازان.
+                    </p>
                     
-                    <h4 class="text-xl font-bold mb-2 text-gray-200">قصة تأسيس فريق صدى جازان</h4>
+                    <div class="h-px w-full bg-white/10 mb-6"></div>
+                    
+                    <h4 class="text-xl font-bold mb-3 text-white flex items-center gap-2">
+                        <i class="fas fa-bullseye text-accent-secondary text-lg"></i> الرؤية والرسالة
+                    </h4>
                     <p class="text-gray-300 leading-relaxed text-base mb-6">
-                        تأسس فريق "صدى جازان" الإعلامي في عام 2018م بمجموعة من الشباب الموهوبين والمتحمسين في مجال الإعلام والتصوير، والذين يجمعهم حب العمل الإعلامي والرغبة في تطوير مهاراتهم وتقديم خدمات إعلامية متميزة للمجتمع. نسعى لنكون الوجهة الأولى للتغطيات الإعلامية الاحترافية وإدارة الفعاليات في المنطقة، من خلال تمكين المواهب الشابة واستخدام أحدث التقنيات.
+                        نسعى لنكون الوجهة الأولى للتغطيات الإعلامية الاحترافية وإدارة الفعاليات في المنطقة، من خلال تمكين المواهب الشابة واستخدام أحدث التقنيات.
+                    </p>
+
+                    <div class="h-px w-full bg-white/10 mb-6"></div>
+
+                    <h4 class="text-xl font-bold mb-2 text-gray-200">قصة تأسيس فريق صدى جازان</h4>
+                    <p class="text-gray-300 leading-relaxed text-base">
+                        تأسس فريق "صدى جازان" الإعلامي في عام 2018م بمجموعة من الشباب الموهوبين والمتحمسين في مجال الإعلام والتصوير، والذين يجمعهم حب العمل الإعلامي والرغبة في تطوير مهاراتهم وتقديم خدمات إعلامية متميزة للمجتمع.
                     </p>
                 </div>
                 
@@ -226,50 +229,50 @@
 
     <section id="services" class="py-24 relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-extrabold mb-16 text-center text-white tracking-wide drop-shadow-md">القطاعات التشغيلية</h2>
+            <h2 class="text-4xl font-extrabold mb-16 text-center text-white tracking-wide drop-shadow-md">خدماتنا</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="glass-panel p-8 rounded-3xl hover-lift flex flex-col justify-between h-80 relative overflow-hidden group">
                     <div class="absolute inset-0 bg-gradient-to-b from-accent-primary/0 to-accent-primary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="w-14 h-14 rounded-2xl bg-accent-primary/20 flex items-center justify-center border border-accent-primary/30 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
-                        <i class="fas fa-camera-retro text-2xl text-accent-primary"></i>
+                        <i class="fas fa-camera text-2xl text-accent-primary"></i>
                     </div>
                     <div class="relative z-10">
                         <h4 class="text-2xl font-bold mb-2 text-white">تغطية الفعاليات</h4>
-                        <p class="text-gray-300 text-sm leading-relaxed">نقل الأحداث والمناسبات بصورة مختلفة، مميزة وشيقة.</p>
+                        <p class="text-gray-300 text-sm leading-relaxed">تغطية الفعاليات والمناسبات ونقلها لكم بصورة مختلفة ومميزة وشيقة.</p>
                     </div>
                 </div>
 
                 <div class="glass-panel p-8 rounded-3xl hover-lift flex flex-col justify-between h-80 lg:translate-y-8 relative overflow-hidden group">
                      <div class="absolute inset-0 bg-gradient-to-b from-accent-secondary/0 to-accent-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="w-14 h-14 rounded-2xl bg-accent-secondary/20 flex items-center justify-center border border-accent-secondary/30 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
-                        <i class="fas fa-layer-group text-2xl text-accent-secondary"></i>
+                        <i class="fas fa-tasks text-2xl text-accent-secondary"></i>
                     </div>
                     <div class="relative z-10">
                         <h4 class="text-2xl font-bold mb-2 text-white">إدارة الفعاليات</h4>
-                        <p class="text-gray-300 text-sm leading-relaxed">تخطيط وإشراف كامل على الفعاليات لضمان التنفيذ المثالي.</p>
+                        <p class="text-gray-300 text-sm leading-relaxed">إدارة الفعاليات والإشراف الكامل عليها لضمان أرقى معايير التنفيذ.</p>
                     </div>
                 </div>
 
                 <div class="glass-panel p-8 rounded-3xl hover-lift flex flex-col justify-between h-80 relative overflow-hidden group">
                     <div class="absolute inset-0 bg-gradient-to-b from-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center border border-white/20">
-                        <i class="fas fa-robot text-2xl text-gray-200"></i>
+                        <i class="fas fa-graduation-cap text-2xl text-gray-200"></i>
                     </div>
                     <div class="relative z-10">
-                        <h4 class="text-2xl font-bold mb-2 text-white">التدريب والتطوير</h4>
-                        <p class="text-gray-300 text-sm leading-relaxed">تأهيل وصقل مهارات المبتدئين في مجال الإعلام والمونتاج.</p>
+                        <h4 class="text-2xl font-bold mb-2 text-white">التدريب والتأهل</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">تدريب وتأهيل المبتدئين في مجال الإعلام وبناء جيل متمكن رقمياً.</p>
                     </div>
                 </div>
 
                 <div class="glass-panel p-8 rounded-3xl hover-lift flex flex-col justify-between h-80 lg:translate-y-8 relative overflow-hidden group">
                     <div class="absolute inset-0 bg-gradient-to-b from-accent-cyan/0 to-accent-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="w-14 h-14 rounded-2xl bg-accent-cyan/20 flex items-center justify-center border border-accent-cyan/30 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
-                        <i class="fas fa-handshake text-2xl text-accent-cyan"></i>
+                        <i class="fas fa-building text-2xl text-accent-cyan"></i>
                     </div>
                     <div class="relative z-10">
-                        <h4 class="text-2xl font-bold mb-2 text-white">التطوير المهني</h4>
-                        <p class="text-gray-300 text-sm leading-relaxed">بناء شراكات والاستفادة من خبرات المؤسسات الإعلامية الرائدة.</p>
+                        <h4 class="text-2xl font-bold mb-2 text-white">التبادل المعرفي</h4>
+                        <p class="text-gray-300 text-sm leading-relaxed">زيارة المؤسسات الإعلامية الرائدة والاستفادة من خبراتهم المتراكمة.</p>
                     </div>
                 </div>
             </div>
@@ -280,39 +283,72 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-extrabold mb-16 text-center text-white tracking-wide drop-shadow-md">القيادة التنفيذية</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
                 <div class="glass-panel p-6 rounded-3xl flex items-center gap-6 border-r-4 border-r-accent-secondary hover:bg-white/5 transition-colors cursor-default">
-                    <div class="w-20 h-20 rounded-2xl bg-dark-700 flex items-center justify-center overflow-hidden border border-white/10">
-                        <i class="fas fa-user-tie text-3xl text-gray-500"></i>
+                    <div class="w-16 h-16 rounded-2xl bg-dark-700 flex items-center justify-center border border-white/10 shrink-0">
+                        <i class="fas fa-user-tie text-2xl text-accent-secondary"></i>
                     </div>
                     <div>
-                        <p class="text-accent-secondary text-xs font-bold tracking-widest uppercase mb-1">المؤسس والرئيس</p>
-                        <h4 class="text-xl font-bold text-white">عبده أحمد العنقري</h4>
+                        <p class="text-accent-secondary text-xs font-bold tracking-widest uppercase mb-1">مؤسس الفريق ورئيسه</p>
+                        <h4 class="text-lg font-bold text-white">عبده أحمد العنقري</h4>
                     </div>
                 </div>
+
                 <div class="glass-panel p-6 rounded-3xl flex items-center gap-6 border-r-4 border-r-accent-primary hover:bg-white/5 transition-colors cursor-default">
-                     <div class="w-20 h-20 rounded-2xl bg-dark-700 flex items-center justify-center overflow-hidden border border-white/10">
-                        <i class="fas fa-user-tie text-3xl text-gray-500"></i>
+                     <div class="w-16 h-16 rounded-2xl bg-dark-700 flex items-center justify-center border border-white/10 shrink-0">
+                        <i class="fas fa-id-badge text-2xl text-accent-primary"></i>
                     </div>
                     <div>
-                        <p class="text-accent-primary text-xs font-bold tracking-widest uppercase mb-1">القائد التنفيذي</p>
-                        <h4 class="text-xl font-bold text-white">يحيى محمد سهلي</h4>
+                        <p class="text-accent-primary text-xs font-bold tracking-widest uppercase mb-1">رئيس الفريق والقائد</p>
+                        <h4 class="text-lg font-bold text-white">عبده أحمد المدخلّي</h4>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl flex items-center gap-6 border-r-4 border-r-accent-cyan hover:bg-white/5 transition-colors cursor-default">
+                     <div class="w-16 h-16 rounded-2xl bg-dark-700 flex items-center justify-center border border-white/10 shrink-0">
+                        <i class="fas fa-eye text-2xl text-accent-cyan"></i>
+                    </div>
+                    <div>
+                        <p class="text-accent-cyan text-xs font-bold tracking-widest uppercase mb-1">مشرف عام</p>
+                        <h4 class="text-lg font-bold text-white">يحيى محمد سهلي</h4>
                     </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="glass-panel p-6 rounded-3xl flex items-center gap-6 hover:bg-white/5 transition-colors cursor-default">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                        <i class="fas fa-handshake text-2xl text-gray-400"></i>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-xs font-bold tracking-widest uppercase mb-1">الشراكات المجتمعية</p>
+                        <h4 class="text-lg font-bold text-white">خالد شعبي</h4>
+                    </div>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl flex items-center gap-6 hover:bg-white/5 transition-colors cursor-default">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                        <i class="fas fa-sliders-h text-2xl text-gray-400"></i>
+                    </div>
+                    <div>
+                        <p class="text-gray-400 text-xs font-bold tracking-widest uppercase mb-1">مشرف وسائل التواصل</p>
+                        <h4 class="text-lg font-bold text-white">إدارة المنصات الرقمية</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="glass-panel p-8 rounded-3xl hover-lift">
                     <h5 class="text-lg font-bold text-white mb-6 flex items-center gap-3">
-                        <span class="w-10 h-10 rounded-full bg-accent-secondary/20 text-accent-secondary flex items-center justify-center shadow-[0_0_10px_rgba(245,158,11,0.2)]"><i class="fas fa-hashtag"></i></span>
-                        التواصل الاجتماعي
+                        <span class="w-10 h-10 rounded-full bg-accent-secondary/20 text-accent-secondary flex items-center justify-center shadow-[0_0_10px_rgba(245,158,11,0.2)]"><i class="fas fa-share-alt"></i></span>
+                        صُنّاع المحتوى والمنصات
                     </h5>
                     <div class="space-y-4 text-sm">
                         <div class="flex justify-between border-b border-white/10 pb-2">
-                            <span class="text-gray-400">منصة X</span> <span class="text-white font-bold">محمد القيسي</span>
+                            <span class="text-gray-400">منصة X (تويتر)</span> <span class="text-white font-bold">محمد القيسي</span>
                         </div>
                         <div class="flex justify-between pb-2">
-                            <span class="text-gray-400">تيك توك</span> <span class="text-white font-bold">محمد حكمي</span>
+                            <span class="text-gray-400">منصة تيك توك</span> <span class="text-white font-bold">محمد حكمي</span>
                         </div>
                     </div>
                 </div>
@@ -324,7 +360,7 @@
                     </h5>
                     <div class="space-y-4 text-sm">
                         <div class="flex justify-between pb-2">
-                            <span class="text-gray-400">المديرة</span> <span class="text-white font-bold">صالحة مقدام</span>
+                            <span class="text-gray-400">مديرة القسم</span> <span class="text-white font-bold">صالحة مقدام</span>
                         </div>
                     </div>
                 </div>
@@ -336,14 +372,70 @@
                     </h5>
                     <div class="space-y-4 text-sm">
                         <div class="border-b border-white/10 pb-3">
-                            <span class="block text-gray-400 mb-2">فريق التصميم</span> 
+                            <span class="block text-gray-400 mb-2">قسم التصميم</span> 
                             <span class="text-white font-bold block leading-relaxed">عائشة السبعي، بدور مغاوي، سارة هرمس</span>
                         </div>
                         <div class="pb-2">
-                            <span class="block text-gray-400 mb-2">التصوير والمونتاج</span> 
+                            <span class="block text-gray-400 mb-2">قسم التصوير والمونتاج</span> 
                             <span class="text-white font-bold">عائشة خرمي</span>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partners" class="py-24 relative z-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-extrabold text-white tracking-wide drop-shadow-md mb-4">شركاء النجاح</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-primary via-accent-cyan to-accent-secondary mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
+                    <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\شركاء\1 (4).png" alt="اكاديمية صبا الثقافية" class="max-h-[75%] max-w-full object-contain mb-1">
+                    <span class="text-xs text-gray-400 font-medium text-center">اكاديمية صبا الثقافية</span>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
+                    <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\شركاء\WhatsApp Image 2025-06-28 at 5.21.50 PM.jpeg" alt="جمعية كرة القدم المصغرة" class="max-h-[75%] max-w-full object-contain mb-1 rounded-lg">
+                    <span class="text-xs text-gray-400 font-medium text-center">جمعية كرة القدم المصغرة</span>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
+                    <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\شركاء\امانة جازان.png" alt="أمانة جازان" class="max-h-[75%] max-w-full object-contain mb-1">
+                    <span class="text-xs text-gray-400 font-medium text-center">أمانة جازان</span>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
+                    <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\شركاء\انامل العطاء التطوعي.png" alt="أنامل العطاء التطوعي" class="max-h-[75%] max-w-full object-contain mb-1">
+                    <span class="text-xs text-gray-400 font-medium text-center">أنامل العطاء التطوعي</span>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
+                    <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\شركاء\جمعية سمعك بصامطة.png" alt="جمعية سمعك بصامطة" class="max-h-[75%] max-w-full object-contain mb-1">
+                    <span class="text-xs text-gray-400 font-medium text-center">جمعية سمعك بصامطة</span>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
+                    <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\شركاء\فريق صناع الابتسامه.png" alt="فريق صناع الابتسامة" class="max-h-[75%] max-w-full object-contain mb-1">
+                    <span class="text-xs text-gray-400 font-medium text-center">فريق صناع الابتسامة</span>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
+                    <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\شركاء\فريق السمو.jfif.jpeg" alt="فريق سمو" class="max-h-[75%] max-w-full object-contain mb-1 rounded-lg">
+                    <span class="text-xs text-gray-400 font-medium text-center">فريق سمو</span>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
+                    <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\شركاء\مهرجان جازان2026.png" alt="مهرجان جازان" class="max-h-[75%] max-w-full object-contain mb-1">
+                    <span class="text-xs text-gray-400 font-medium text-center">مهرجان جازان</span>
+                </div>
+
+                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
+                    <img src="C:\Users\mmodd\OneDrive\Desktop\صدى جاان\صور\شركاء\وزارة الصحة.png" alt="وزارة الصحة" class="max-h-[75%] max-w-full object-contain mb-1">
+                    <span class="text-xs text-gray-400 font-medium text-center">وزارة الصحة</span>
                 </div>
             </div>
         </div>
@@ -386,9 +478,11 @@
                 </form>
 
                 <div class="mt-12 pt-8 border-t border-white/10 flex justify-center gap-6 relative z-10">
-                    <a href="#" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white hover:bg-accent-primary/80 transition-all hover:scale-110 shadow-lg"><i class="fab fa-x-twitter text-xl"></i></a>
-                    <a href="#" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white hover:bg-accent-secondary/80 transition-all hover:scale-110 shadow-lg"><i class="fab fa-tiktok text-xl"></i></a>
-                    <a href="#" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white hover:bg-accent-cyan/80 transition-all hover:scale-110 shadow-lg"><i class="fas fa-envelope text-xl"></i></a>
+                    <a href="https://x.com/sadajazanmedia1/status/2008090046164017491?s=48&t=XrKjI7GIpu3G-r5o_iogyQ" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white hover:bg-accent-primary/80 transition-all hover:scale-110 shadow-lg" title="منصة X"><i class="fab fa-x-twitter text-xl"></i></a>
+                    
+                    <a href="https://vt.tiktok.com/ZS5PALTtp/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white hover:bg-accent-secondary/80 transition-all hover:scale-110 shadow-lg" title="منصة تيك توك"><i class="fab fa-tiktok text-xl"></i></a>
+                    
+                    <a href="https://www.instagram.com/reel/DTG6LqZjKAy/?igsh=b2h3bHF3bjZpcXht" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-300 hover:text-white hover:bg-accent-cyan/80 transition-all hover:scale-110 shadow-lg" title="منصة إنستغرام"><i class="fab fa-instagram text-xl"></i></a>
                 </div>
             </div>
         </div>
