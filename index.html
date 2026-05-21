@@ -25,6 +25,15 @@
                             purple: '#7c3aed',  /* بنفسجي عميق */
                             cyan: '#06b6d4'     /* أزرق سيان */
                         }
+                    },
+                    animation: {
+                        'infinite-scroll': 'infinite-scroll 65s linear infinite',
+                    },
+                    keyframes: {
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(100%)' },
+                        }
                     }
                 }
             }
@@ -132,10 +141,10 @@
     <div id="mouse-orb"></div>
 
     <div class="fixed w-full z-50 top-6 px-4 sm:px-6 lg:px-8 pointer-events-none">
-        <nav class="max-w-7xl mx-auto glass-panel rounded-2xl pointer-events-auto shadow-2xl border-b border-accent-primary/20">
+        <nav class="max-w-7xl mx-auto glass-panel rounded-2xl pointer-events-auto shadow-2xl border-b border-white/5">
             <div class="flex justify-between items-center h-20 px-8">
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 p-1 overflow-hidden hover:scale-105 transition-transform">
+                    <div class="w-16 h-16 rounded-xl flex items-center justify-center p-0.5 overflow-hidden hover:scale-105 transition-transform duration-300">
                         <img src="صور/لوجو/logo.png" alt="شعار صدى جازان" class="w-full h-full object-contain">
                     </div>
                     <span class="font-extrabold text-xl tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
@@ -217,10 +226,10 @@
                 
                 <div class="glass-panel p-10 rounded-3xl bg-gradient-to-br from-accent-primary/10 to-transparent flex flex-col justify-center relative overflow-hidden">
                     <div class="absolute bottom-0 left-0 w-32 h-32 bg-accent-secondary/10 rounded-full blur-3xl -z-10"></div>
-                    <h3 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-accent-secondary to-gray-200 mb-2 drop-shadow-lg">2018</h3>
+                    <h3 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-accent-secondary to-gray-200 mb-2 drop-shadow-lg">2018م</h3>
                     <p class="text-gray-400 text-sm font-bold tracking-widest uppercase mb-6">سنة التأسيس والانطلاق</p>
                     <div class="h-px w-full bg-white/10 mb-6"></div>
-                    <h3 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-accent-primary to-gray-200 mb-2 drop-shadow-lg">1444</h3>
+                    <h3 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-accent-primary to-gray-200 mb-2 drop-shadow-lg">2023م</h3>
                     <p class="text-gray-400 text-sm font-bold tracking-widest uppercase">التدشين الرسمي بالهيئة</p>
                 </div>
             </div>
@@ -257,11 +266,11 @@
                 <div class="glass-panel p-8 rounded-3xl hover-lift flex flex-col justify-between h-80 relative overflow-hidden group">
                     <div class="absolute inset-0 bg-gradient-to-b from-white/0 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div class="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center border border-white/20">
-                        <i class="fas fa-graduation-cap text-2xl text-gray-200"></i>
+                        <i class="fas fa-graduation-cap text-2xl text-gray-300"></i>
                     </div>
                     <div class="relative z-10">
                         <h4 class="text-2xl font-bold mb-2 text-white">التدريب والتأهل</h4>
-                        <p class="text-gray-300 text-sm leading-relaxed">تدريب وتأهيل المبتدئين في مجال الإعلام وبناء جيل متمكن رقمياً.</p>
+                        <p class="text-gray-300 text-sm leading-relaxed">تدريب وتأهل المبتدئين في مجال الإعلام وبناء جيل متمكن رقمياً.</p>
                     </div>
                 </div>
 
@@ -385,60 +394,66 @@
         </div>
     </section>
 
-    <section id="partners" class="py-24 relative z-10 border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
+    <section id="partners" class="py-24 relative z-10 border-t border-white/5 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
+            <div class="text-center">
                 <h2 class="text-4xl font-extrabold text-white tracking-wide drop-shadow-md mb-4">شركاء النجاح</h2>
                 <div class="w-24 h-1 bg-gradient-to-r from-accent-primary via-accent-cyan to-accent-secondary mx-auto rounded-full"></div>
             </div>
+        </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-8 items-center max-w-5xl mx-auto">
-                
-                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
-                    <img src="صور/شركاء/p1.png" alt="اكاديمية صبا الثقافية" class="max-h-[75%] max-w-full object-contain mb-1">
-                    <span class="text-xs text-gray-400 font-medium text-center">اكاديمية صبا الثقافية</span>
-                </div>
+        <div class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+            <ul class="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll">
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p1.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p2.jpeg" alt="شريك" class="max-h-full max-w-full object-contain rounded-lg"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p3.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p4.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p5.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p6.jpeg" alt="شريك" class="max-h-full max-w-full object-contain rounded-lg"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p7.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p8.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p9.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p10.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p11.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p12.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p13.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p14.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p15.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p16.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p17.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p18.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p19.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p20.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p21.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p22.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p23.PNG" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+            </ul>
 
-                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
-                    <img src="صور/شركاء/p2.jpeg" alt="جمعية كرة القدم المصغرة" class="max-h-[75%] max-w-full object-contain mb-1 rounded-lg">
-                    <span class="text-xs text-gray-400 font-medium text-center">جمعية كرة القدم المصغرة</span>
-                </div>
-
-                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
-                    <img src="صور/شركاء/p3.png" alt="أمانة جازان" class="max-h-[75%] max-w-full object-contain mb-1">
-                    <span class="text-xs text-gray-400 font-medium text-center">أمانة جازان</span>
-                </div>
-
-                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
-                    <img src="صور/شركاء/p4.png" alt="أنامل العطاء التطوعي" class="max-h-[75%] max-w-full object-contain mb-1">
-                    <span class="text-xs text-gray-400 font-medium text-center">أنامل العطاء التطوعي</span>
-                </div>
-
-                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
-                    <img src="صور/شركاء/p5.png" alt="جمعية سمعك بصامطة" class="max-h-[75%] max-w-full object-contain mb-1">
-                    <span class="text-xs text-gray-400 font-medium text-center">جمعية سمعك بصامطة</span>
-                </div>
-
-                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
-                    <img src="صور/شركاء/p6.jpeg" alt="فريق صناع الابتسامة" class="max-h-[75%] max-w-full object-contain mb-1">
-                    <span class="text-xs text-gray-400 font-medium text-center">فريق صناع الابتسامة</span>
-                </div>
-
-                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
-                    <img src="صور/شركاء/p7.png" alt="فريق سمو" class="max-h-[75%] max-w-full object-contain mb-1 rounded-lg">
-                    <span class="text-xs text-gray-400 font-medium text-center">فريق سمو</span>
-                </div>
-
-                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
-                    <img src="صور/شركاء/p8.png" alt="مهرجان جازان" class="max-h-[75%] max-w-full object-contain mb-1">
-                    <span class="text-xs text-gray-400 font-medium text-center">مهرجان جازان</span>
-                </div>
-
-                <div class="glass-panel p-4 rounded-2xl flex flex-col items-center justify-center h-36 partner-card">
-                    <img src="صور/شركاء/p9.png" alt="وزارة الصحة" class="max-h-[75%] max-w-full object-contain mb-1">
-                    <span class="text-xs text-gray-400 font-medium text-center">وزارة الصحة</span>
-                </div>
-            </div>
+            <ul class="flex items-center justify-center md:justify-start [&_li]:mx-4 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p1.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p2.jpeg" alt="شريك" class="max-h-full max-w-full object-contain rounded-lg"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p3.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p4.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p5.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p6.jpeg" alt="شريك" class="max-h-full max-w-full object-contain rounded-lg"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p7.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p8.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p9.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p10.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p11.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p12.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p13.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p14.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p15.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p16.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p17.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p18.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p19.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p20.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p21.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p22.png" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+                <li><div class="glass-panel p-4 rounded-2xl flex items-center justify-center w-48 h-28 partner-card"><img src="صور/شركاء/p23.PNG" alt="شريك" class="max-h-full max-w-full object-contain"></div></li>
+            </ul>
         </div>
     </section>
 
